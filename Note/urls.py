@@ -21,5 +21,7 @@ from app.views import *
 urlpatterns = [
     path('',home),
     path('note-type/',note_type),
-    path('admin/', admin.site.urls),
+    path('admin/', admin.site.urls), 
+    path("create_note/", create_note)
+
 ]

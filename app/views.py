@@ -12,3 +12,6 @@ def home(request):
 def note_type(request):
     template = loader.get_template("type.html")
     return HttpResponse(template.render())
+
+def create_note(request):
+    pass
