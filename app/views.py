@@ -8,7 +8,7 @@ from .forms import NoteForm
 def home(request):
     note_obj = Note.objects.all().order_by('id')
     data = {"notes":note_obj}
-    return render(request,"type.html",context=data)
+    return render(request,"index.html",context=data)
 
 def note_type(request):
     template = loader.get_template("type.html")
