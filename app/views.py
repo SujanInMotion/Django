@@ -11,8 +11,10 @@ def home(request):
     return render(request,"index.html",context=data)
 
 def note_type(request):
-    template = loader.get_template("type.html")
-    return HttpResponse(template.render())
+    note_obj = Note.objects.all().order_by('id')
+    data = {"notes":note_obj}
+    return render(request,"type.html",context=data)
+
 
 def create_note(request):
     note_form_obj = NoteForm()
@@ -26,7 +28,7 @@ def create_note(request):
 def edit_note(request,pk):
     note_obj = Note.objects.get(id=pk)
     if request == 'POST':
-        form_obj = NoteForm(intance = note_obj,data=request.POSt)
+        form_obj = NoteForm(intance = note_obj,data=request.POST)
         if form_obj.is_valid():
             form_obj.save()
     form_obj = NoteForm(instance=note_obj)
