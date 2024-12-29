@@ -1,0 +1,148 @@
+  
+
+
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>ContactForm</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="">
+        <style>
+            .container4 {
+                margin: 0 auto;
+                padding: 0;
+                height: auto; /* Use auto or a fixed height as needed */
+                min-height: 900px; /* Ensures a minimum height for larger forms */
+                background-size: cover;
+                background-position: center;
+              }
+              
+              .contact-form-container4 {
+                max-width: 450px; /* A more reasonable width for a form */
+                margin: 50px auto;
+                height: auto;
+                padding: 40px 30px;
+                background-color: #ffffff;
+                border-radius: 15px;
+                box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+              }
+              
+              .contact-form-container4 h2 {
+                text-align: center;
+                color: #007bff;
+                margin-bottom: 25px;
+                font-size: 24px;
+              }
+              
+              .form-group {
+                margin-bottom: 20px;
+              }
+              
+              .form-group label {
+                font-weight: bold;
+                color: #333;
+                display: block;
+                margin-bottom: 8px;
+              }
+              
+              .form-control {
+                border-radius: 8px;
+                padding: 12px 15px;
+                border: 1px solid #ccc;
+                font-size: 14px;
+                width: 100%;
+                transition: border-color 0.3s ease, box-shadow 0.3s ease;
+              }
+              
+              .form-control:focus {
+                border-color: #007bff;
+                box-shadow: 0 0 6px rgba(0, 123, 255, 0.4);
+                outline: none;
+              }
+              
+              .btn-primary {
+                background-color: #007bff;
+                color: #fff;
+                border: none;
+                padding: 12px 20px;
+                font-size: 16px;
+                border-radius: 8px;
+                cursor: pointer;
+                transition: all 0.3s ease;
+                width: 100%;
+              }
+              
+              .btn-primary:hover {
+                background-color: #0056b3;
+                transform: translateY(-3px);
+                box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+              }
+              
+              .form-footer {
+                text-align: center;
+                margin-top: 20px;
+              }
+              
+              .form-footer a {
+                text-decoration: none;
+                color: #007bff;
+              }
+              
+              .form-footer a:hover {
+                text-decoration: underline;
+              }
+              
+              @media (max-width: 768px) {
+                .contact-form-container4 {
+                  padding: 20px 15px;
+                }
+              
+                .btn-primary {
+                  font-size: 14px;
+                  padding: 10px 15px;
+                }
+              }
+            
+        </style>
+    </head>
+    <body>
+
+        <div class="container5" id='contact-us'>
+            <div class="contact-form-container4">
+                <h2>Contact Us</h2>
+                <form method="POST" action="{% url 'send_email' %}">
+                   {% csrf_token %}
+                    <!-- Name input -->
+                    <div class="form-group">
+                        <label for="name">Full Name</label>
+                        <input type="text" class="form-control" id="name" name="username" placeholder="Enter your full name" required>
+                    </div>
+        
+                    <!-- Email input -->
+                    <div class="form-group">
+                        <label for="email">Email address</label>
+                        <input type="email" class="form-control" id="email" name="email" required placeholder="Enter your email" required>
+                    </div>
+        
+                    <!-- Message textarea -->
+                    <div class="form-group">
+                        <label for="message" name="message">Message</label>
+                        <textarea class="form-control" id="message" rows="4" placeholder="Write your message" required></textarea>
+                    </div>
+        
+                    <!-- Submit button -->
+                    <button type="submit"  class="btn btn-primary">Submit</button>
+                </form>
+        
+            </div>
+        </div>
+        
+       
+        
+        
+    </body>
+</html>

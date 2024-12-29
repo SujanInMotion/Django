@@ -13,5 +13,5 @@ class NoteType(models.Model):
 class Note(models.Model):
     name = models.CharField(max_length=150)
     description = models.TextField()
-    type = models.ForeignKey("NoteType",on_delete=models.SET_NULL,null=True)
+    type = models.ForeignKey(NoteType,on_delete=models.SET_NULL,null=True)
     user = models.ForeignKey(User,on_delete=models.SET_NULL,null=True)
