@@ -12,6 +12,9 @@
 <body>
 
 
+    {% include "nav.html" %}
+
+
     <form method="POST">
         {% csrf_token %}
             {{form}}

@@ -22,7 +22,7 @@ urlpatterns = [
     path('',home,name='home'),
     path('note-type/',note_type),
     path('admin/', admin.site.urls), 
-    path('create-note/', create_note),
+    path('create-note/', create_note,name="create-note"),
     path('edit-note/<int:pk>/',edit_note,name='edit-note'),
     path('delete-note/<int:pk>/', delete_note,name='delete-note'),
     path('delete-all/', delete_all,name='delete-all'),

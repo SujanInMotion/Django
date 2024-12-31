@@ -1,0 +1,58 @@
+
+
+{% load static %}
+
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>navbar</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        
+    </head>
+    <body>
+      
+        <nav class="navbar navbar-expand-lg bg-body-tertiary">
+            <div class="container-fluid">
+              <img src="{% static 'logo.png' %}"  alt="logo" height="50px" width="50px">
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav mx-auto">
+        
+                  <li class="nav-item">
+                    <a class="nav-link active"  href="">Home</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link active" href="{% url 'create-note' %}">Create</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link active" href="C:\Users\sujan\OneDrive\Desktop\Django\Note\templates\contact.html/">Contact</a>
+                  </li>                
+                </ul>  
+        
+                <ul class="navbar-nav ms-auto"> 
+                      {% comment %} if login == false:    {% endcomment %}
+                        <li class="nav-item">
+                          <a class="nav-link active"  href="login/">Login</a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link active" href="register/">Signup</a>
+                        </li>
+                      {% comment %} else login == True:
+                      <li class="nav-item">
+                        <a class="nav-link active"  href="login/">Log out</a>
+                      </li> {% endcomment %}
+                        
+                </ul>
+              </div>
+            </div>
+          </nav>
+        
+        
+    </body>
+</html>

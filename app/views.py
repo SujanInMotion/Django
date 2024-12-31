@@ -5,29 +5,38 @@ from .models import Note,NoteType
 from .forms import NoteForm,UserForm
 from django.contrib.auth.hashers import make_password
 from django.contrib.auth import authenticate,login
+from django.contrib.auth.decorators import login_required
+from django.contrib import messages
 
 
 # Create your views here.
+@login_required
 def home(request):
     note_obj = Note.objects.all().order_by('id')
-    data = {"notes":note_obj}
+    note_type_obj = Note.objects.all().order_by('id')
+    
+    data = {"notes":note_obj,'note-type':note_type_obj}
     return render(request,"index.html",context=data)
 
+@login_required
 def note_type(request):
     note_obj = Note.objects.all().order_by('id')
     data = {"notes":note_obj}
     return render(request,"type.html",context=data)
 
-
+@login_required
 def create_note(request):
     note_form_obj = NoteForm()
     if request.method == 'POST':
         note_form_obj = NoteForm(data=request.POST)
         if note_form_obj.is_valid():
             note_form_obj.save()
+            messages.success(request,'Note created Sucessfully!')
+            return redirect(home)
     data = {'form':note_form_obj}
     return render(request,'create_note.html',context=data)
 
+@login_required
 def edit_note(request,pk):
     note_obj = Note.objects.get(id=pk)
     if request.method == 'POST':
@@ -38,11 +47,13 @@ def edit_note(request,pk):
     data = {'form':form_obj}
     return render(request,'edit_note.html',context=data)
 
+@login_required
 def delete_note(request,pk):    
     note_obj = Note.objects.get(id=pk)
     note_obj.delete()
     return redirect(home)
-    
+ 
+@login_required   
 def delete_all(request):
     note_obj = Note.objects.get()
     note_obj.delete()
